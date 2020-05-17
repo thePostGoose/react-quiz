@@ -1,0 +1,22 @@
+@import '../../styles/variables';
+
+
+.Quiz {
+  display: flex;
+  justify-content: center;
+  padding-top: 7.25em;
+  flex-grow: 1;
+  width: 100%;
+  background: $main-color;
+
+  &Wrapper > h1 {
+    color: #fff;
+    margin: .6em;
+    font-family: 'Muli', sans-serif;
+    font-weight: 400;
+  }
+
+  &Wrapper {
+    width: 45em;
+  }
+}

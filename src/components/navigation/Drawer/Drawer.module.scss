@@ -1,0 +1,38 @@
+.Drawer {
+  font-size: 1rem;
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 80%;
+  max-width: 18.75em;
+  padding: 1.25em .625em;
+  background: #fff;
+  transform: translateX(0);
+  transition: transform .25s ease-in;
+  z-index: 900;
+
+  &.close {
+    transform: translateX(-18.75em);
+  }
+
+  & ul li {
+    margin-bottom: 1em;
+
+    & a {
+      color: #363d54;
+      font-size: 2rem;
+      text-decoration: none;
+      background-color: #fff;
+      position: relative;
+      padding: 0 .67em .33em .67em;
+      transition: opacity .3s;
+
+      &:hover,
+      &:active {
+        opacity: .7;
+      }
+    }
+  }
+
+}

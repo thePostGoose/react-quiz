@@ -1,0 +1,42 @@
+@import '../../../styles/variables.scss';
+
+.Button {
+  outline: none;
+  border-radius: .8em;
+  padding: 1em;
+  margin: 0.5em;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 0.75rem;
+  border: 0px;
+  color: rgb(67, 81, 206);
+  background: $btn-bg;
+
+  &:hover {
+    box-shadow: 0 0 4em .125em rgb(77, 213, 255);
+  }
+
+  &:disabled {
+    background: #ccc;
+    color: #000;
+    cursor: not-allowed;
+  }
+
+  &.success {
+    background: $success;
+
+    &:hover {
+      box-shadow: 0 0 4em .125em $success;
+    }
+  }
+
+  &.failure {
+    background: $failure;
+
+    &:hover {
+      box-shadow: 0 0 4em .125em $failure;
+    }
+  }
+
+}
