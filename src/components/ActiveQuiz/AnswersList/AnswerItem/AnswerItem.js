@@ -1,6 +1,6 @@
 import React from "react";
 import classes from "./AnswerItem.module.scss";
-import { onAnswerClickHandlerContext } from "../../../../containers/quiz/Quiz";
+import { onAnswerClickHandlerContext } from "../../../../containers/Quiz/Quiz";
 
 const AnswerItem = (props) => {
   return (

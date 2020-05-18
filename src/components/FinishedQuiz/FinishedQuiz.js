@@ -1,7 +1,8 @@
 import React from "react";
 import classes from "./FinishedQuiz.module.scss";
 import Button from "../UI/Button/Button";
-import { retryHandlerContext } from "../../containers/quiz/Quiz";
+import { retryHandlerContext } from "../../containers/Quiz/Quiz";
+import { Link } from "react-router-dom";
 
 const FinishedQuiz = (props) => {
   const quiz = props.quiz,
@@ -35,12 +36,12 @@ const FinishedQuiz = (props) => {
           {(handler) => {
             return (
               <React.Fragment>
-                <Button onClick={handler} >
-                  Повторить
+                <Button onClick={handler}>Повторить</Button>
+                <Link to='/'>
+                  <Button type={"success"}>
+                  Перейти в список тестов
                 </Button>
-                <Button type={"success"}>
-                 Перейти в список тестов
-                </Button>
+                </Link>
               </React.Fragment>
             );
           }}

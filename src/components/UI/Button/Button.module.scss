@@ -17,17 +17,12 @@
     box-shadow: 0 0 4em .125em rgb(77, 213, 255);
   }
 
-  &:disabled {
-    background: #ccc;
-    color: #000;
-    cursor: not-allowed;
-  }
 
   &.success {
     background: $success;
 
     &:hover {
-      box-shadow: 0 0 4em .125em $success;
+      box-shadow: 0 0 2em .125em $success;
     }
   }
 
@@ -35,7 +30,17 @@
     background: $failure;
 
     &:hover {
-      box-shadow: 0 0 4em .125em $failure;
+      box-shadow: 0 0 2em .125em $failure;
+    }
+  }
+
+  &:disabled {
+    background: #ccc;
+    color: #000;
+    cursor: not-allowed;
+
+    &:hover {
+      box-shadow: 0 0 2em .125em #707070;
     }
   }
 

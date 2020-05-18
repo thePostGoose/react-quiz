@@ -77,7 +77,10 @@ export class Quiz extends Component {
       });
     }
   };
-
+  componentDidMount() {
+    console.log("Quiz ID = ", this.props.match.params.id)
+  }
+  
   retryHandler = () => {
     this.setState({
       results: {},
