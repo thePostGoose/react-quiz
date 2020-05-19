@@ -1,8 +1,8 @@
 import React from "react";
 import classes from "./Input.module.scss";
 
-function isInvalid({valid, touched, shouldValidate}) {
-  return !valid && shouldValidate && touched
+function isInvalid({ valid, touched, shouldValidate }) {
+  return !valid && touched && shouldValidate;
 }
 
 const Input = (props) => {

@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import classes from "./Quiz.module.scss";
 import ActiveQuiz from "../../components/ActiveQuiz/ActiveQuiz";
 import FinishedQuiz from "../../components/FinishedQuiz/FinishedQuiz";
-
+import Loader from "../../components/UI/Loader/Loader";
+import axios from "../../axios/axios-quiz";
 export const onAnswerClickHandlerContext = React.createContext();
 export const retryHandlerContext = React.createContext();
 
@@ -12,30 +13,8 @@ export class Quiz extends Component {
     isFinished: false,
     activeQuestion: 0,
     userAnswer: null,
-    quiz: [
-      {
-        id: 1,
-        rightAnswerId: 2,
-        question: "Каков ответ, на вопрос Жизни, Вселенной и Всего Остального?",
-        answers: [
-          { text: "Аминь", id: 1 },
-          { text: "42", id: 2 },
-          { text: "Глорзо -- это мир, мир -- это Глорзо", id: 3 },
-          { text: "Владимир Путин", id: 4 },
-        ],
-      },
-      {
-        id: 2,
-        rightAnswerId: 1,
-        question: "Ave Maria!",
-        answers: [
-          { text: "Deus vult!", id: 1 },
-          { text: "Das ist gut!", id: 2 },
-          { text: "Dusin knut!", id: 3 },
-          { text: "Ava Dakedavra!", id: 4 },
-        ],
-      },
-    ],
+    quiz: [],
+    loading: true,
   };
 
   onAnswerClickHandler = (answerId) => {
@@ -77,10 +56,21 @@ export class Quiz extends Component {
       });
     }
   };
-  componentDidMount() {
-    console.log("Quiz ID = ", this.props.match.params.id)
+  async componentDidMount() {
+    try {
+      const response = await axios.get(
+        `/quizes/${this.props.match.params.id}.json`
+      );
+      const quiz = response.data;
+      this.setState({
+        quiz,
+        loading: false,
+      });
+    } catch (e) {
+      console.log(e);
+    }
   }
-  
+
   retryHandler = () => {
     this.setState({
       results: {},
@@ -94,7 +84,9 @@ export class Quiz extends Component {
     return (
       <div className={classes.Quiz}>
         <div className={classes.QuizWrapper}>
-          {this.state.isFinished ? (
+          {this.state.loading ? (
+            <Loader />
+          ) : this.state.isFinished ? (
             <retryHandlerContext.Provider value={this.retryHandler}>
               <FinishedQuiz
                 results={this.state.results}
